@@ -1,0 +1,19 @@
+.user-header
+  %h2
+    CSV Uploader
+
+  %p
+    Refer
+    = link_to 'Sample CSV', sample_csv_users_path
+.user-form
+  = form_with url: users_path do |f|
+    = f.file_field :file, required: true, accept: ".csv"
+    = f.submit 'Upload'
+
+- if @results.present?
+  .user-results
+    %ol
+      - @results.each do |result|
+        %li
+          = result
+    
